@@ -143,6 +143,8 @@ h1, h2, h3, h4, .weight-input, .chip, .today-total {
 
 .chip-row { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 4px; scrollbar-width: none; }
 
+.chip-row .chip { flex-shrink: 0; }
+
 .chip {
   min-height: 38px; min-width: 38px; padding: 4px 13px;
   border-radius: 999px; border: 1px solid var(--line);

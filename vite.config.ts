@@ -4,6 +4,8 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vite.dev/config/
 export default defineConfig({
+  // accept tunnel hostnames (Pinggy etc.) when previewing on a phone
+  preview: { allowedHosts: true },
   plugins: [
     react(),
     VitePWA({

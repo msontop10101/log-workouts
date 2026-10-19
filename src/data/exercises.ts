@@ -18,9 +18,8 @@ export const GROUPS: MuscleGroup[] = [
   'Chest', 'Back', 'Shoulders', 'Arms', 'Legs', 'Glutes', 'Core', 'Cardio',
 ];
 
-export const DEFAULT_SELECTED: string[] = [
-  'squat', 'bench', 'pulldown', 'ohp', 'rdl', 'row',
-];
+// My Exercises starts empty — the user picks their own from the Library
+export const DEFAULT_SELECTED: string[] = [];
 
 export const EXERCISES: Exercise[] = [
   { id: 'bb_bench', name: 'Barbell Bench Press', group: 'Chest', equipment: 'barbell', type: 'weighted', slug: 'Barbell_Bench_Press_-_Medium_Grip' },

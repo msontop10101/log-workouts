@@ -1,32 +1,44 @@
-# React + TypeScript + Vite
+# Lift Log
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Phone-first PWA for logging gym workouts set by set. All data stays on the
+device in IndexedDB; works fully offline once loaded.
 
-Currently, two official plugins are available:
+## Run locally
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```sh
+npm install
+npm run dev          # http://localhost:5173
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+To try it on your phone on the same wifi: `npm run dev -- --host`, then open
+the Network URL it prints.
+
+The exercise photos in `public/exercises/` are committed. To re-fetch them
+from free-exercise-db: `npx tsx scripts/fetch-images.ts`.
+
+## Deploy (so you can open it on your phone)
+
+Either host works on the free tier — build settings are auto-detected
+(build `npm run build`, output `dist`).
+
+**Vercel:**
+
+```sh
+npx vercel --prod
+```
+
+**Netlify:**
+
+```sh
+npx netlify-cli deploy --prod --build
+```
+
+Open the deployed URL on your phone, then **Add to Home Screen**
+(Share → Add to Home Screen on iOS; Install app in Chrome on Android).
+After the first load everything — including all exercise photos — is cached
+offline, so bad gym signal doesn't matter.
+
+## Backup
+
+Settings (gear icon) → **Export backup** downloads a JSON file;
+**Import backup** merges one back in by session id.
